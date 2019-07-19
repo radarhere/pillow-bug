@@ -5,8 +5,3 @@ git clone -q https://github.com/python-pillow/Pillow.git
 cd Pillow/depends/
 ./install_raqm.sh
 pip3 install pillow
-
-# actual bug:
-cd /vagrant/files/
-echo "run test"
-python3 test.py
