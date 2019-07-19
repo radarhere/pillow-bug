@@ -1,0 +1,12 @@
+echo "installing dependencies"
+sudo apt install -y -q python3-pip git fonts-noto-core libfreetype6-dev libharfbuzz-dev libfribidi-dev libglib2.0-dev
+echo "clone repo"
+git clone -q https://github.com/python-pillow/Pillow.git
+cd Pillow/depends/
+./install_raqm.sh
+pip3 install pillow
+
+# actual bug:
+cd /vagrant/files/
+echo "run test"
+python3 test.py
