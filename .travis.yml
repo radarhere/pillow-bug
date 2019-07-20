@@ -1,0 +1,21 @@
+dist: xenial
+language: python
+cache: pip
+
+services:
+  - docker
+
+before_install:
+  - docker pull debian
+
+install:
+  - echo "installing dependencies"
+  - sudo apt install -y -q python3-pip git fonts-noto-core libfreetype6-dev libharfbuzz-dev libfribidi-dev libglib2.0-dev
+  - echo "clone repo"
+  - git clone -q https://github.com/python-pillow/Pillow.git
+  - cd Pillow/depends/
+  - ./install_raqm.sh
+  - pip3 install pillow
+
+script:
+- python3 files/test.py
