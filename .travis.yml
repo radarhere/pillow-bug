@@ -10,7 +10,6 @@ before_install:
 
 install:
   - echo "installing dependencies"
-  - docker run debian:buster apt-get update
   - docker run debian:buster apt-get install -y -q python3-pip git fonts-noto-core libfreetype6-dev libharfbuzz-dev libfribidi-dev libglib2.0-dev
   - echo "clone repo"
   - docker run debian:buster git clone -q https://github.com/python-pillow/Pillow.git
