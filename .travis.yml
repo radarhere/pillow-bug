@@ -10,12 +10,13 @@ before_install:
 
 install:
   - echo "installing dependencies"
-  - sudo apt install -y -q python3-pip git fonts-noto-core libfreetype6-dev libharfbuzz-dev libfribidi-dev libglib2.0-dev
+  - docker run debian:buster apt install -f
+  - docker run debian:buster apt install -y -q python3-pip git fonts-noto-core libfreetype6-dev libharfbuzz-dev libfribidi-dev libglib2.0-dev
   - echo "clone repo"
-  - git clone -q https://github.com/python-pillow/Pillow.git
-  - cd Pillow/depends/
-  - ./install_raqm.sh
-  - pip3 install pillow
+  - docker run debian:buster git clone -q https://github.com/python-pillow/Pillow.git
+  - docker run cd Pillow/depends/
+  - docker run ./install_raqm.sh
+  - docker run pip3 install pillow
 
 script:
-- python3 files/test.py
+- docker run python3 files/test.py
