@@ -5,17 +5,5 @@ cache: pip
 services:
   - docker
 
-before_install:
-  - docker pull debian:buster
-
-install:
-  - echo "installing dependencies"
-  - docker run debian:buster apt-get install -y -q python3-pip git fonts-noto-core libfreetype6-dev libharfbuzz-dev libfribidi-dev libglib2.0-dev
-  - echo "clone repo"
-  - docker run debian:buster git clone -q https://github.com/python-pillow/Pillow.git
-  - docker run cd Pillow/depends/
-  - docker run ./install_raqm.sh
-  - docker run pip3 install pillow
-
 script:
-- docker run python3 files/test.py
+- docker build -f ./Dockerfile .

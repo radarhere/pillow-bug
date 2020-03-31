@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont, features
 
 print(features.check('raqm'))
-print(Image.PILLOW_VERSION)
+print(Image.__version__)
 
 img = Image.new('RGB', (800, 300), color = (73, 109, 137))
 d = ImageDraw.Draw(img)
